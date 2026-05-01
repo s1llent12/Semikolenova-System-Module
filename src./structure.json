@@ -1,1 +1,32 @@
-
+{
+  "module_name": "Semicolenova_Security_Module",
+  "version": "1.0.0",
+  "description": "Модуль безопасности и управления доступом",
+  
+  "input": {
+    "user_id": "string (UUID)",
+    "session_token": "string (JWT)",
+    "user_query": "string",
+    "requested_resource": "string",
+    "action_type": "string (read/write/execute/admin)"
+  },
+  
+  "output": {
+    "access_granted": "boolean",
+    "user_roles": "array of strings",
+    "audit_log_id": "string (UUID)",
+    "sanitized_query": "string",
+    "error_code": "integer",
+    "error_message": "string"
+  },
+  
+  "security_policies": {
+    "rbac_enabled": true,
+    "rls_enabled": true,
+    "audit_enabled": true,
+    "pii_masking_enabled": true,
+    "llm_firewall_enabled": true
+  },
+  
+  "roles": ["guest", "user", "manager", "admin", "auditor"]
+}
